@@ -1,0 +1,16 @@
+{
+  "name": "Start on Heroku: Python",
+  "description": "Python Tutorial",
+  "image": "heroku/python",
+  "repository": "https://github.com/BritCoder96/Django-Tutorial",
+  "keywords": ["python", "django" ],
+  "addons": [ "heroku-postgresql" ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test-setup": "python manage.py collectstatic --noinput",
+        "test": "python manage.py test"
+      }
+    }
+  }
+}
