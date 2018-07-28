@@ -21,3 +21,16 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
     def __str__(self):
         return self.choice_text
+
+
+class User(models.Model):
+    username = models.CharField(max_length=200)
+    def __str__(self):
+        return self.username
+
+class Answer(models.Model):
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    answer_date = models.DateTimeField('date answered')
+    def __str__(self):
+        return self.choice.choice_text
