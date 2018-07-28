@@ -1,0 +1,22 @@
+{% load static %}
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/styles.css' %}" />
+
+<h1>Latest answers for {{ user.username }}</h1>
+<div class='polls-list'>
+	{% if latest_answer_list %}
+	    <ul>
+	    {% for answer in latest_answer_list %}
+			<li>
+				<p>You answered '{{ answer.choice.choice_text }}' to '{{ answer.choice.question.question_text }}' on {{ answer.answer_date }}.</p>
+				<a href="{% url 'polls:detail' question.id %}">Answer again?</a>
+			</li>
+	    {% endfor %}
+	    </ul>
+	{% else %}
+	    <p>No answers are available.</p>
+	{% endif %}
+	<a href="{% url 'polls:index' %}">Back to Questions List</a>
+
+</div>
